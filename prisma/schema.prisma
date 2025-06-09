@@ -24,10 +24,10 @@ model CheckIn {
   validated_at DateTime?
 
   user_id String
-  user    User   @relation(fields: [user_id], references: [id])
+  user    User   @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   gym_id String
-  gym    Gym    @relation(fields: [gym_id], references: [id])
+  gym    Gym    @relation(fields: [gym_id], references: [id], onDelete: Cascade)
 
   @@map("check_ins")
 }
@@ -40,4 +40,6 @@ model Gym {
   latitude    Decimal
   longitude   Decimal
   CheckIn     CheckIn[]
+
+  @@map("gyms")
 }
